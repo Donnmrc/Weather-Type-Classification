@@ -1,1 +1,59 @@
+import os
+import shutil
+import numpy as np
+from sklearn.model_selection import train_test_split
 
+def prepare_dataset(source_dir, output_dir, split_ratio=(0.7, 0.15, 0.15)):
+    """
+    Organizes and splits the weather dataset into Train, Val, and Test folders.
+    """
+    train_prc, val_prc, test_prc = split_ratio
+    categories = ['Cloudy', 'Rainy', 'Shine', 'Sunrise']
+
+    for category in categories:
+        # Create destination directories
+        for split in ['train', 'val', 'test']:
+            os.makedirs(os.path.join(output_dir, split, category), exist_ok=True)
+
+        # Get all images for this category
+        category_path = os.path.join(source_dir, category)
+        if not os.path.exists(category_path):
+            print(f"Warning: Category folder {category} not found in {source_dir}")
+            continue
+            
+        images = [f for f in os.listdir(category_path) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+        
+        # Perform splits
+        train_files, test_val_files = train_test_split(images, train_size=train_prc, random_state=42)
+        
+        # Split the remaining into validation and test
+        relative_val_size = val_prc / (val_prc + test_prc)
+        val_files, test_files = train_test_split(test_val_files, train_size=relative_val_size, random_state=42)
+
+        # Copy files to their new homes
+        dataset_map = {
+            'train': train_files,
+            'val': val_files,
+            'test': test_files
+        }
+
+        for split, file_list in dataset_map.items():
+            for file_name in file_list:
+                src = os.path.join(category_path, file_name)
+                dst = os.path.join(output_dir, split, category, file_name)
+                shutil.copy(src, dst)
+
+    print(f" Dataset split complete. Files are located in: {output_dir}")
+
+if __name__ == "__main__":
+    # You can run this file directly to test the split
+    prepare_dataset(source_dir='raw_dataset', output_dir='split_dataset')
+
+from logic.data_processing import prepare_dataset
+
+# Define your paths
+RAW_DATA = "path/to/your/cleaned_images"
+PROCESSED_DATA = "data/weather_split"
+
+# Run the split logic
+prepare_dataset(source_dir=RAW_DATA, output_dir=PROCESSED_DATA)
