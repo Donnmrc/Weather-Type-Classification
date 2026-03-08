@@ -1,7 +1,8 @@
 import datetime
 from typing import List, Optional
 from pydantic import BaseModel, Field
-#data set was cleaned
+
+# Data set was cleaned
 class WeatherPrediction(BaseModel):
     class_name: str = Field(..., alias="className")  
     confidence: float
