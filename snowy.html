@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snowy Weather</title>
+    <title>Cloudy Weather</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #a2c2e4, #d9e6f2);
+            background: linear-gradient(to right, #dfe9f3, #f3f4f6);
             color: #333;
             margin: 0;
             padding: 0;
@@ -26,7 +26,7 @@
             width: 100%;
         }
         h1 {
-            color: #007bff;
+            color: #6c757d;
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
@@ -38,32 +38,33 @@
             margin: 20px 0;
         }
         .gif-container img {
-            max-width: 100%;
+            width: 100%; /* Adjust the width percentage as needed */
             height: auto;
+            max-width: 500px; /* Maximum width */
             border-radius: 8px;
         }
         a {
             display: inline-block;
             font-size: 1.1rem;
-            color: #007bff;
+            color: #6c757d;
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 8px;
-            border: 2px solid #007bff;
+            border: 2px solid #6c757d;
             transition: background-color 0.3s, color 0.3s;
         }
         a:hover {
-            background-color: #007bff;
+            background-color: #6c757d;
             color: #fff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Snowy Weather Predicted</h1>
-        <p>It looks like the weather will be snowy. Dress warmly and drive safely!</p>
+        <h1>Cloudy Weather Predicted</h1>
+        <p>It looks like the weather will be cloudy. You might want to prepare for a grey day.</p>
         <div class="gif-container">
-            <img src="{{ url_for('static', filename='images/snowy.gif') }}" alt="Snowy GIF">
+            <img src="{{ url_for('static', filename='images/cloudy.gif') }}" alt="Cloudy GIF">
         </div>
         <a href="/">Go Back</a>
     </div>
