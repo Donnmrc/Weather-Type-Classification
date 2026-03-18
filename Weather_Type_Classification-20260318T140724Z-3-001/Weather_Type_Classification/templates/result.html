@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Prediction Result</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.result-container {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.prediction-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 8px;
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-back {
+    background: #007bff;
+    color: white;
+}
+
+.btn-back:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.btn-new {
+    background: #28a745;
+    color: white;
+}
+
+.btn-new:hover {
+    background: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.details {
+    text-align: left;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.details h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.details p {
+    margin: 8px 0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="result-container">
+    <h1>Weather Prediction</h1>
+    
+    <div class="prediction-box">
+        {{ prediction_text.replace('Predicted Weather: ', '') }}
+    </div>
+
+    <div class="details">
+        <h3>Input Parameters</h3>
+        <p><strong>Temperature:</strong> {{ temperature }}°C</p>
+        <p><strong>Humidity:</strong> {{ humidity }}%</p>
+        <p><strong>Wind Speed:</strong> {{ wind_speed }} km/h</p>
+        <p><strong>Precipitation:</strong> {{ precipitation }}%</p>
+        <p><strong>Cloud Cover:</strong> {{ cloud_cover }}</p>
+        <p><strong>UV Index:</strong> {{ uv_index }}</p>
+        <p><strong>Season:</strong> {{ season }}</p>
+        <p><strong>Visibility:</strong> {{ visibility }} km</p>
+        <p><strong>Location:</strong> {{ location }}</p>
+        <p><strong>Atmospheric Pressure:</strong> {{ pressure }}</p>
+    </div>
+
+    <div class="button-group">
+        <button class="btn-back" onclick="window.history.back()">← Back</button>
+        <button class="btn-new" onclick="window.location.href='/'">← New Prediction</button>
+    </div>
+</div>
+
+</body>
+</html>
