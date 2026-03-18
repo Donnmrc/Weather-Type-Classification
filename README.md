@@ -36,75 +36,133 @@ For more details and to access the latest version of the web application, please
 
 Follow these step-by-step instructions to properly download and run the project on your local machine.
 1️⃣ Download the Repository
+
 Option 1: Download ZIP (Recommended for Beginners)
-Go to the main repository page.
-Click the green Code button.
-Select Download ZIP.
-Locate the downloaded .zip file in your Downloads folder.
+
+Go to the repository page
+
+Click the green Code button
+
+Select Download ZIP
+
+Locate the downloaded .zip file in your Downloads folder
 
 Option 2: Clone via Git
-git clone https://github.com/IsaCouture/Weather-Type-Classification-WebApp.git
 
+git clone https://github.com/IsaCouture/Weather-Type-Classification-WebApp.git
 2️⃣ Extract the ZIP File
-Right-click the downloaded .zip file.
-Click Extract All.
-Choose your preferred location.
-Open the extracted folder.
+
+Right-click the downloaded .zip file
+
+Click Extract All
+
+Choose your preferred location
+
+Open the extracted folder
 
 3️⃣ Open the Project in VS Code
-Open Visual Studio Code.
-Click File → Open Folder.
-Select the extracted project folder.
-Click Select Folder.
 
-4️⃣ Open a New Terminal in VS Code
-In VS Code, click Terminal → New Terminal.
-Make sure the terminal path is inside your project folder.
-You should see something like:
-Weather-Type-Classification-WebApp>
+Open Visual Studio Code
 
-5️⃣ (Optional but Recommended) Create a Virtual Environment
-Creating a virtual environment helps avoid dependency conflicts.
+Click File → Open Folder
+
+Select the project folder
+
+Click Select Folder
+
+4️⃣ Open a Terminal in VS Code
+
+Click Terminal → New Terminal
+
+Make sure the terminal path is inside your project folder
+
+Example:
+
+Weather-Type-Classification>
+5️⃣ (Recommended) Create a Virtual Environment
+
+This avoids dependency conflicts.
+
 python -m venv venv
+
 Activate it:
+
 Windows:
+
 venv\Scripts\activate
+
 Mac/Linux:
+
 source venv/bin/activate
-
 6️⃣ Install Required Dependencies
-Make sure you are inside the project directory, then run:
+
+Run the following:
+
 pip install -r requirements.txt
-If requirements.txt includes libraries like:
-scikit-learn
-flask
-numpy
+
+This will install the required libraries such as:
+
+Flask
+
+PyTorch (torch)
+
 pandas
-matplotlib
 
-They will automatically be installed.
+scikit-learn
 
-If needed manually:
-pip install flask scikit-learn numpy pandas matplotlib
+joblib
 
-7️⃣ Run the Flask Application
-After installation is complete, run:
+7️⃣ (IMPORTANT) Train the Model First
+
+Before running the app, you need to generate the model and preprocessing files.
+
+python train_dl_model.py
+
+This will create:
+
+weather_model.pth
+
+scaler.pkl
+
+label_encoder.pkl
+
+Make sure these files exist before proceeding.
+
+8️⃣ Run the Flask Application
 python app.py
-If successful, you should see something like:
-Running on http://127.0.0.1:5000/
 
-8️⃣ Open the Web Application
-Open your browser.
+If successful, you should see:
+
+Running on http://127.0.0.1:5000/
+9️⃣ Open the Web Application
+
+Open your browser
+
 Go to:
+
 http://127.0.0.1:5000/
-Start inputting weather data and explore the predictions.
+
+Input weather data and view predictions
 
 Troubleshooting 🔧
-If python is not recognized, make sure Python is installed and added to your system PATH.
-If pip is not recognized, try:
+
+Python not recognized
+
+Make sure Python is installed and added to PATH
+
+pip not working
+
 python -m pip install -r requirements.txt
 
-If port 5000 is already in use, stop other Flask apps running on your machine.
+Missing files error (VERY COMMON)
+
+Make sure you ran:
+
+python train_dl_model.py
+
+Port 5000 already in use
+
+Close other running Flask apps
 
 ## Technologies Used 💻
 
