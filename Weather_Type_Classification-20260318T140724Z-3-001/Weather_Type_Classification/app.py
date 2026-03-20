@@ -10,7 +10,6 @@ import os
 
 app = Flask(__name__)
 
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///weather_users.db'
 app.config['SECRET_KEY'] = 'your-secret-key-change-this'
 db = SQLAlchemy(app)
