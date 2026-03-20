@@ -1,4 +1,3 @@
-# train_dl_model.py
 import pandas as pd
 import torch
 import torch.nn as nn
@@ -33,7 +32,7 @@ X = data.drop("Weather Type", axis=1)
 y = data["Weather Type"]
 
 # -----------------------------
-# 4️⃣ Train-test split
+# 4️⃣ Train-test splits
 # -----------------------------
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
